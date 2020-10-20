@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9717140f-09f6-4af9-a61f-17034209a4da" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/watch-node/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out-of-cluster-configuration/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/out-of-cluster-configuration/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/modules.txt" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/modules.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,7 +17,7 @@
         <entry file="file://$PROJECT_DIR$/in-cluster-client-configuration/main.go">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="450">
-              <caret line="30" column="5" lean-forward="true" selection-start-line="21" selection-start-column="4" selection-end-line="30" selection-end-column="5" />
+              <caret line="30" column="5" selection-start-line="21" selection-start-column="4" selection-end-line="30" selection-end-column="5" />
               <folding>
                 <element signature="e#14#142#0" expanded="true" />
               </folding>
@@ -51,11 +46,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/out-of-cluster-configuration/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+            <state relative-caret-position="270">
+              <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
               <folding>
                 <element signature="e#14#158#0" expanded="true" />
               </folding>
@@ -68,6 +63,15 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="693">
               <caret line="562" column="79" selection-start-line="562" selection-start-column="79" selection-end-line="562" selection-end-column="79" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
         </entry>
@@ -108,47 +112,32 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="156" />
-    <option name="y" value="134" />
-    <option name="width" value="1637" />
-    <option name="height" value="1024" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="39" />
+    <option name="y" value="23" />
+    <option name="width" value="1641" />
+    <option name="height" value="1027" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="Scope" currentSubView="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
             <path>
-              <item name="kubernetes-demo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kubernetes-demo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kubernetes-demo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kubernetes-demo" type="462c0819:PsiDirectoryNode" />
-              <item name="in-cluster-client-configuration" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kubernetes-demo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kubernetes-demo" type="462c0819:PsiDirectoryNode" />
-              <item name="out-of-cluster-configuration" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kubernetes-demo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kubernetes-demo" type="462c0819:PsiDirectoryNode" />
-              <item name="watch-node" type="462c0819:PsiDirectoryNode" />
+              <item name="kubernetes-demo" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/golang/lib/src/github.com/penglongli/kubernetes-demo" type="442cc68d:ScopeViewTreeModel$RootNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -179,10 +168,9 @@
     </option>
   </component>
   <component name="ToolWindowManager">
-    <frame x="39" y="23" width="1641" height="1027" extended-state="6" />
-    <editor active="true" />
+    <frame x="39" y="23" width="1641" height="1027" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24828018" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24828018" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -195,7 +183,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4990619" visible="true" weight="0.32941177" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.4990619" visible="true" weight="0.32941177" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50093806" side_tool="true" weight="0.32941177" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -244,13 +232,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/in-cluster-client-configuration/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -282,7 +263,7 @@
     <entry file="file://$PROJECT_DIR$/in-cluster-client-configuration/main.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
-          <caret line="30" column="5" lean-forward="true" selection-start-line="21" selection-start-column="4" selection-end-line="30" selection-end-column="5" />
+          <caret line="30" column="5" selection-start-line="21" selection-start-column="4" selection-end-line="30" selection-end-column="5" />
           <folding>
             <element signature="e#14#142#0" expanded="true" />
           </folding>
@@ -301,11 +282,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/out-of-cluster-configuration/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+        <state relative-caret-position="270">
+          <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
           <folding>
             <element signature="e#14#158#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>

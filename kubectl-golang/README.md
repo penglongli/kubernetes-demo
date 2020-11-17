@@ -1,0 +1,2 @@
+- https://ymmt2005.hatenablog.com/entry/2020/04/14/An_example_of_using_dynamic_client_of_k8s.io/client-go
+- https://github.com/kubernetes/client-go/issues/216#issuecomment-718813670

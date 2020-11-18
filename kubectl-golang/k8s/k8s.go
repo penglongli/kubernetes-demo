@@ -3,6 +3,7 @@ package k8s
 import (
 	"encoding/base64"
 
+	"github.com/pkg/errors"
 	"k8s.io/client-go/discovery"
 	"k8s.io/client-go/discovery/cached/memory"
 	"k8s.io/client-go/dynamic"
@@ -26,7 +27,7 @@ func GetDynamicClient() (dynamic.Interface, error) {
 
 	restConfig, err := buildRestConfig(base64KubeConfig)
 	if err != nil {
-		return nil, err
+		return nil, errors.Wrap(err, "build restConfig failed")
 	}
 
 	return dynamic.NewForConfig(restConfig)
@@ -39,13 +40,13 @@ func GetDiscoveryMapper() (*restmapper.DeferredDiscoveryRESTMapper, error) {
 
 	restConfig, err := buildRestConfig(base64KubeConfig)
 	if err != nil {
-		return discoveryMapper, err
+		return discoveryMapper, errors.Wrap(err, "build restConfig failed")
 	}
 
 	// Prepare a RESTMapper to find GVR
 	dc, err := discovery.NewDiscoveryClientForConfig(restConfig)
 	if err != nil {
-		return discoveryMapper, err
+		return discoveryMapper, errors.Wrap(err, "new dc failed")
 	}
 
 	discoveryMapper = restmapper.NewDeferredDiscoveryRESTMapper(memory.NewMemCacheClient(dc))

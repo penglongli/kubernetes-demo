@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"bytes"
 	"context"
+	"fmt"
 	"io"
 
 	"github.com/pkg/errors"
@@ -33,6 +34,7 @@ func Apply(ctx context.Context, base64KubeConfig string, data []byte) (result []
 		return nil, err
 	}
 
+	less116 = true
 	var low *lowVersion
 	if less116 {
 		low = &lowVersion{
@@ -51,6 +53,7 @@ func Apply(ctx context.Context, base64KubeConfig string, data []byte) (result []
 				}
 				if less116 {
 					if err = low.apply(dataBytes); err != nil {
+						fmt.Println(err.Error())
 						result = append(result, err.Error())
 					}
 					continue

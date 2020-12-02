@@ -10,36 +10,50 @@ import (
 
 var (
 	applyYAML = `
-apiVersion: v1
-kind: Namespace
+---
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: test-008
+  name: centos1
+  namespace: ingress
   labels:
-    app: test-008
+    app: centos1
+  annotations:
+    test: test2
 spec:
-  finalizers:
-  - kubernetes
+  replicas: 1
+  selector:
+    matchLabels:
+      app: centos1
+  template:
+    metadata:
+      labels:
+        app: centos1
+    spec:
+      containers:
+      - name: centos1
+        image: centos:7
+        command:
+        - python
+        args:
+        - "-m"
+        - "SimpleHTTPServer"
+        - "80"
 
 ---
 apiVersion: v1
-kind: Namespace
+kind: Service
 metadata:
-  name: test-apply1
-  labels:
-    app: test-apply1
+  namespace: ingress
+  name: centos1
 spec:
-  finalizers:
-  - kubernetes
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: test-apply2
-  labels:
-    app: test-apply2
-spec:
-  finalizers:
-  - kubernetes
+  ports:
+  - name: http
+    targetPort: 80
+    port: 80
+    protocol: TCP
+  selector:
+    app: centos1
 `
 )
 

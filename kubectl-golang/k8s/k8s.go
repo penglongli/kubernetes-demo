@@ -5,10 +5,12 @@ import (
 	"strconv"
 
 	"github.com/pkg/errors"
+	corev1 "k8s.io/api/core/v1"
 	"k8s.io/client-go/discovery"
 	"k8s.io/client-go/discovery/cached/memory"
 	"k8s.io/client-go/dynamic"
 	"k8s.io/client-go/kubernetes"
+	"k8s.io/client-go/kubernetes/scheme"
 	"k8s.io/client-go/rest"
 	"k8s.io/client-go/restmapper"
 	"k8s.io/client-go/tools/clientcmd"
@@ -26,6 +28,17 @@ func (kube *KubeClient) GetClientSet() (*kubernetes.Clientset, error) {
 	}
 
 	return kubernetes.NewForConfig(restConfig)
+}
+
+func (kube *KubeClient) GetRESTClient() (*rest.RESTClient, error) {
+	restConfig, err := kube.buildRestConfig()
+	if err != nil {
+		return nil, errors.Wrap(err, "build restConfig failed")
+	}
+
+	restConfig.GroupVersion = &corev1.SchemeGroupVersion
+	restConfig.NegotiatedSerializer = scheme.Codecs
+	return rest.RESTClientFor(restConfig)
 }
 
 func (kube *KubeClient) GetDynamicClient() (dynamic.Interface, error) {

@@ -1,0 +1,60 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+button:hover, select:hover {
+    cursor: pointer;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    padding: 0;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+#top-select {
+    padding: 20px 20px;
+    border: 1px solid rgb(216, 218, 223);
+    border-top: 0;
+}
+
+#top-select ul {
+    list-style-type: none;
+}
+
+#top-select ul li {
+    float: left;
+    margin-right: 30px;
+}
+
+#top-select ul:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+#top-select ul li select {
+    border: 1px solid #6d6868;
+    padding: 5px 5px 5px 2px;
+    border-radius: 4px;
+}
+
+#top-select ul li button {
+    border: none;
+    background: #e44343;
+    color: #FFF;
+    padding: 7px 10px;
+    border-radius: 5px;
+}
+
+.term {
+    height: 800px;
+    background: #000;
+    display: none;
+}

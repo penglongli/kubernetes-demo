@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Terminal</title>
+    <link rel="stylesheet" href="/static/xterm.min.css"/>
+    <link rel="stylesheet" href="/static/terminal.css"/>
+    <script type="text/javascript" src="/static/sockjs.min.js"></script>
+    <script type="text/javascript" src="/static/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/xterm.min.js"></script>
+</head>
+<body>
+
+<div class="wrapper">
+    <div id="top-select">
+        <ul>
+            <li>
+                <label for="namespace">Namespace: </label>
+                <select id="namespace">
+                    <option>Please select</option>
+                </select>
+            </li>
+            <li>
+                <label for="pod">Pod: </label>
+                <select id="pod">
+                    <option>Please select</option>
+                </select>
+            </li>
+            <li>
+                <label for="container">Container: </label>
+                <select id="container">
+                    <option>Please select</option>
+                </select>
+            </li>
+            <li>
+                <button id="connect">Connect</button>
+            </li>
+        </ul>
+    </div>
+
+    <div id="terminal-with-logging">
+        <div id="terminal" class="term">
+
+        </div>
+
+        <div id="logging" class="term">
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/static/terminal.js"></script>
+<script>
+    let wrapper = $(".wrapper")
+    let globalPods = null;
+    let globalSock = null;
+
+    // Bind namespace select change
+    wrapper.on("change", "#namespace", function () {
+        let namespace = $("#namespace option:selected").attr("value")
+        if (namespace === undefined || namespace === "") {
+            return
+        }
+
+        let k8sPods = namespacePods(namespace)
+        if (k8sPods === undefined || k8sPods === null) {
+            return
+        }
+
+        globalPods = new Map();
+        $("#pod").html(function () {
+            let podSelect = "<option>Please select</option>"
+
+            for (let i = 0; i < k8sPods.length; i++) {
+                globalPods.set(k8sPods[i].name, k8sPods[i].containers)
+                podSelect += `<option value="` + k8sPods[i].name + `">` + k8sPods[i].name + `</option>`
+            }
+            return podSelect
+        })
+    })
+
+    // Bind pod select change
+    wrapper.on("change", "#pod", function () {
+        let pod = $("#pod option:selected").attr("value")
+        if (pod === undefined || pod === "") {
+            return
+        }
+
+        let k8sContainers = globalPods.get(pod)
+        if (k8sContainers === undefined || k8sContainers === null) {
+            return
+        }
+
+        $("#container").html(function () {
+            let containerSelect = "<option>Please select</option>"
+
+            for (let i = 0; i < k8sContainers.length; i++) {
+                containerSelect += `<option value="` + k8sContainers[i] + `">` + k8sContainers[i] + `</option>`
+            }
+            return containerSelect
+        })
+    })
+
+    // Bind connect click event
+    wrapper.on("click", "#connect", function () {
+        let namespace = $("#namespace option:selected").attr("value");
+        let pod = $("#pod option:selected").attr("value");
+        let container = $("#container option:selected").attr("value");
+
+        terminalExec(namespace, pod, container)
+    })
+
+    // Init namespace select
+    let allNamespaces = namespaces()
+    $("#namespace").html(function () {
+        let namespaceSelect = "<option>Please select</option>";
+        for (let i = 0; i < allNamespaces.length; i++) {
+            namespaceSelect += `<option value="` + allNamespaces[i] + `">` + allNamespaces[i] + `</option>`
+        }
+        return namespaceSelect;
+    })
+</script>
+</body>
+</html>

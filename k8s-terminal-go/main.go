@@ -1,12 +1,13 @@
 package main
 
 import (
-	"fmt"
-	"regexp"
+	"github.com/gin-gonic/gin"
+
+	"github.com/penglongli/kubernetes-demo/k8s-terminal-go/handler"
 )
 
 func main() {
-	const configMapKeyFmt = `[-._a-zA-Z0-9]+`
-	var configMapKeyRegexp = regexp.MustCompile("^" + configMapKeyFmt + "$")
-	fmt.Println(configMapKeyRegexp.MatchString("."))
+	r := gin.Default()
+	handler.Router(r)
+	_ = r.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }

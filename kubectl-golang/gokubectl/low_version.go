@@ -3,7 +3,7 @@ import (
 	"context"
 	"strings"
 
-	"github.com/ghodss/yaml"
+	"sigs.k8s.io/yaml"
 	"github.com/pkg/errors"
 	admissionv1 "k8s.io/api/admissionregistration/v1"
 	appsv1 "k8s.io/api/apps/v1"
@@ -20,7 +20,6 @@ import (
 	k8sErrors "k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
-	k8syaml "sigs.k8s.io/yaml"
 
 	"github.com/penglongli/kubernetes-demo/kubectl-golang/k8s"
 )
@@ -71,7 +70,7 @@ type lowVersion struct {
 
 func (low *lowVersion) apply(data []byte) error {
 	var typeMeta runtime.TypeMeta
-	if err := k8syaml.Unmarshal(data, &typeMeta); err != nil {
+	if err := yaml.Unmarshal(data, &typeMeta); err != nil {
 		return errors.Wrapf(err, "Decode yaml failed. ")
 	}
 	if typeMeta.Kind == "" {
@@ -626,10 +625,6 @@ func node(ctx context.Context, kubeClient *k8s.KubeClient, data []byte) error {
 	_, err = clientSet.CoreV1().Nodes().Update(ctx, obj, metav1.UpdateOptions{})
 	return err
 }
-
-
-
-
 
 func persistentvolumeclaim(ctx context.Context, kubeClient *k8s.KubeClient, data []byte) error {
 	clientSet, err := kubeClient.GetClientSet()

@@ -1,0 +1,72 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: leaderelection-test
+  namespace: default
+
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: leaderelection-test
+rules:
+  - apiGroups: [""]
+    resources: ["endpoints", "configmaps"]
+    verbs: ["get", "list", "watch", "create", "delete", "update"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["get", "list", "watch", "create", "update", "patch"]
+  - apiGroups: ["coordination.k8s.io"]
+    resources: ["leases"]
+    verbs: ["get", "list", "watch", "create", "delete", "update"]
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: leaderelection-test
+subjects:
+  - kind: ServiceAccount
+    name: leaderelection-test
+    namespace: default
+roleRef:
+  kind: ClusterRole
+  name: leaderelection-test
+  apiGroup: rbac.authorization.k8s.io
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: leaderelection-test
+  labels:
+    app: leaderelection-test
+spec:
+  selector:
+    app: leaderelection-test
+  ports:
+    - name: dummy
+      port: 12345
+
+---
+kind: StatefulSet
+apiVersion: apps/v1
+metadata:
+  name: leaderelection-test
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: leaderelection-test
+  serviceName: leaderelection-test
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: leaderelection-test
+    spec:
+      serviceAccount: leaderelection-test
+      containers:
+        - name: leaderelection
+          image: leaderelection:1.0
+          imagePullPolicy: "IfNotPresent"
